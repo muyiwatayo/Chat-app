@@ -2,86 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev.s hub</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enzo Bet</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    body{background:#0f172a;color:white}
+    header{background:#020617;padding:15px;display:flex;justify-content:space-between;align-items:center}
+    header h1{color:#22c55e}
+    nav a{color:white;margin:0 10px;text-decoration:none;font-weight:bold}
+    nav a:hover{color:#22c55e}
+    .container{padding:15px}
+    .notice{background:#1e293b;padding:10px;border-left:4px solid #22c55e;margin-bottom:15px;font-size:14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+    .card{background:#1e293b;padding:15px;border-radius:8px}
+    .card h3{margin-bottom:10px}
+    .odds{display:flex;justify-content:space-between;margin-top:10px}
+    .odd{background:#020617;padding:8px 10px;border-radius:5px;cursor:pointer}
+    .odd:hover{background:#22c55e;color:black}
+    #betslip{position:fixed;bottom:0;left:0;right:0;background:#020617;padding:10px;border-top:2px solid #22c55e}
+    button{padding:10px;border:none;border-radius:5px;background:#22c55e;color:black;font-weight:bold;cursor:pointer}
+    .hidden{display:none}
+  </style>
 </head>
 <body>
+
+<header>
+  <h1>Enzo Bet</h1>
   <nav>
-    <div class="logo"><bold>Dev.s hub</bold></div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="register.html">Register</a></li>
-      
-    </ul>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('sports')">Sports</a>
+    <a href="#" onclick="showPage('wallet')">Wallet</a>
+    <a href="#" onclick="showPage('about')">About</a>
   </nav>
+</header>
 
-  <header>
-    <div class="overlay">
-      <h1>Welcome To Dev.s hub</h1>
-      <p>Where Innovation Brings Peace</p>
-      <button onclick="location.href='#register'">Join the Movement</button>
-    </div>
-  </header>
+<div class="container">
+  <div class="notice">
+    ⚠️ Demo betting website for learning only. No real money.
+  </div>
 
-  <section class="countdown">
-    <h2>Countdown to Dev.s Boot Camp</h2>
-    <div id="timer"></div>
-  </section>
-
-  <section id="about">
-    <h2>About the Event</h2>
-    <div class="sec"><p>Dev.s boot camp is a 6-weeks online boot camp. <br>buiding future tech leader's and programmers into the community. <br>which is Powered by Nigeria’s brightest minds.</p> <img src="IMG-20251105-WA0039.jpg" height="200px" width="330px">
-   </div>
-    
-  </section>
-
-  <section id="tracks">
-    <h2>Programming Languages</h2>
-    <div class="cards">
-      <div class="card">Scratch</div>
-      <div class="card">Html</div>
-      <div class="card">Css</div>
-      <div class="card">Javascript</div>
-      <div class="card">Python</div>
-      <div class="card">Git</div>
-
+  <section id="home">
+    <h2>Welcome to Enzo Bet</h2>
+    <p>Fast, simple betting experience (Demo).</p>
+    <div class="grid" style="margin-top:15px">
+      <div class="card"><h3>Football</h3><p>Top leagues.</p></div>
+      <div class="card"><h3>Basketball</h3><p>NBA games.</p></div>
+      <div class="card"><h3>Tennis</h3><p>Grand slams.</p></div>
     </div>
   </section>
 
-  
-
-    </section>
-  <section id="register">
-    <h2>Apply Now</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Email Address" required />
-      <button type="submit" onclick="submit">Submit</button>
-    </form>
+  <section id="sports" class="hidden">
+    <h2>Football Matches</h2>
+    <div class="grid" style="margin-top:10px">
+      <div class="card">
+        <h3>Arsenal vs Chelsea</h3>
+        <div class="odds">
+          <div class="odd" onclick="addBet('Arsenal',1.8)">1.8</div>
+          <div class="odd" onclick="addBet('Draw',3.2)">3.2</div>
+          <div class="odd" onclick="addBet('Chelsea',2.5)">2.5</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Real Madrid vs Barca</h3>
+        <div class="odds">
+          <div class="odd" onclick="addBet('Real Madrid',2.0)">2.0</div>
+          <div class="odd" onclick="addBet('Draw',3.5)">3.5</div>
+          <div class="odd" onclick="addBet('Barca',2.2)">2.2</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
+  <section id="wallet" class="hidden">
+    <h2>Wallet</h2>
+    <p>Balance: ₦<span id="balance">10000</span></p>
+    <button onclick="addFunds()">Add Demo Funds</button>
+  </section>
 
-    <h3>Connect With Us</h3>
-    <p>Email <span class="copy-email" onclick="copyEmail()">techguruma@gmail.com</span></p>
+  <section id="about" class="hidden">
+    <h2>About Enzo Bet</h2>
+    <p>This is a sample betting-style website made with only HTML, CSS and JavaScript.</p>
+    <p>It is only for learning, not real betting.</p>
+  </section>
+</div>
 
-    <div class="social-icons">
-      <a href="https://wa.me/+2349081416637" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="whatsapp" style="height: 50px;"></a>
-      <a href="https://instagram.com/odeshinam" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="instagram" style="height: 50px;"></a>
-      <a href="https://x.com/EyitayoOlu33826" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="x" style="height: 50px;"></a>
-      <a href="https://linkedin.com/Eyitayo Oluwamuyiwa" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="linkedin" style="height: 50px;"></a>
-      <a href="https://facebook.com/Martins Odeshina" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="facebook" style="height: 50px;"></a>
-      <a href="https://tiktok.com/@eyitayo2008" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="tiktok" style="height: 50px;"></a>
-      <a href="https://youtube.com/Eyitayo Oluwamuyiwa" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Youtube" style="height: 50px;"></a>
-    </div>
+<div id="betslip">
+  <h3>Bet Slip</h3>
+  <div id="betItems">No bets yet</div>
+  <p>Total Odds: <span id="totalOdds">0</span></p>
+  <button onclick="placeBet()">Place Demo Bet</button>
+</div>
 
-    <p>&copy; 2025 Dev.s hub. Built with ❤️ in Nigeria.</p>
-  </footer>
-  
-  <script src="script.js">
-    document.querySelector o
-  </script>
+<script>
+  let bets=[];
+  let balance=10000;
+
+  function showPage(page){
+    document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
+    document.getElementById(page).classList.remove('hidden');
+  }
+
+  function addBet(name,odd){
+    bets.push({name,odd});
+    renderBets();
+  }
+
+  function renderBets(){
+    const box=document.getElementById('betItems');
+    if(bets.length===0){box.innerText='No bets yet';return;}
+    box.innerHTML=bets.map(b=>`<div>${b.name} @ ${b.odd}</div>`).join('');
+    let total=bets.reduce((t,b)=>t*b.odd,1).toFixed(2);
+    document.getElementById('totalOdds').innerText=total;
+  }
+
+  function placeBet(){
+    if(bets.length===0){alert('Add a bet first');return;}
+    alert('Demo bet placed!');
+    bets=[];
+    renderBets();
+    document.getElementById('totalOdds').innerText=0;
+  }
+
+  function addFunds(){
+    balance+=5000;
+    document.getElementById('balance').innerText=balance;
+    alert('₦5000 demo funds added');
+  }
+</script>
+
 </body>
 </html>
